@@ -1,7 +1,7 @@
 {
   "name": "tail-vapor",
-  "version": "1.0.0",
-  "description": "A vaporwave/synthwave/cyberpunk 80s retro Tailwind CSS theme with neon glows, grid backgrounds, and 5 customizable color variations",
+  "version": "2.0.0",
+  "description": "A vaporwave/synthwave/cyberpunk 80s retro Tailwind CSS theme with neon glows, grid backgrounds, and 8 customizable color variations",
   "main": "src/index.js",
   "files": [
     "src/"
