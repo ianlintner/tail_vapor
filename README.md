@@ -1,19 +1,31 @@
-# 🌴 Tail Vapor
+# 🌴 Tail Vapor v2.0
 
-A **vaporwave / synthwave / cyberpunk 80s retro** Tailwind CSS theme with neon glows, grid backgrounds, sunset gradients, and 5 customizable color variations.
+A **vaporwave / synthwave / cyberpunk 80s retro** Tailwind CSS theme with neon glows, grid backgrounds, sunset gradients, and **8 customizable color variations**.
 
+![Version](https://img.shields.io/badge/version-2.0.0-ff00ff)
 ![Vaporwave Theme](https://img.shields.io/badge/style-vaporwave-ff00ff)
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%3E%3D3.0.0-06b6d4)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+## ✨ What's New in v2.0 (Phase 2)
+
+- 🎨 **8 Theme Variations**: 3 new themes - Arcade, Outrun, and Cyber Noir
+- 🧩 **50+ Components**: Badges, alerts, inputs, tables, tabs, progress bars, avatars, and more
+- 🎬 **12 New Animations**: Glitch, rainbow shift, holographic, laser scan, pulse ring, and more
+- 🌈 **Gradient Effects**: New gradient text, borders, and background utilities
+- 📝 **Form Elements**: Styled inputs, textareas, toggles, and form components
+- 🎮 **Retro Effects**: CRT, VHS, scanlines, pixel fonts, arcade styles
+- 🖼️ **New Backgrounds**: Starfield, holographic, laser grid, and theme-specific gradients
+- ✨ **Enhanced Glow Effects**: Double glow, rainbow glow, pulse ring effects
+
 ## ✨ Features
 
-- 🎨 **5 Theme Variations**: Sunset Boulevard, Neon City, Miami Vice, Digital Dreams, Midnight Chrome
+- 🎨 **8 Theme Variations**: Sunset, Neon City, Miami Vice, Digital Dreams, Midnight Chrome, Arcade, Outrun, Cyber Noir
 - ✨ **Neon Glow Effects**: Beautiful glow utilities for text, borders, and box shadows
 - 📐 **Retro Grid Backgrounds**: Perspective grids with smooth scrolling animations
 - 🌅 **Sunset Gradients**: Pre-built sunset and horizon gradient backgrounds
-- 🔤 **Retro Typography**: Curated fonts including Orbitron, Rajdhani, and Share Tech Mono
-- 🎬 **Animations**: Glow pulse, neon flicker, floating, scanlines, and chrome shine effects
+- 🔤 **Retro Typography**: Curated fonts including Orbitron, Rajdhani, Share Tech Mono, Press Start 2P, and VT323
+- 🎬 **Animations**: Glow pulse, neon flicker, floating, scanlines, glitch, rainbow shift, and more
 - 📺 **Retro Components**: VHS effects, CRT scanlines, cassette tape decorations
 - 🎵 **Music Ready**: Pre-styled audio player component for background synthwave music
 
@@ -91,9 +103,143 @@ Cool chrome and silver with blue accents.
 <body data-theme="midnight-chrome"></body>
 ```
 
+### 6. 🕹️ Arcade (NEW)
+
+Classic arcade game colors with neon green and red.
+
+```html
+<body data-theme="arcade"></body>
+```
+
+### 7. 🏎️ Outrun (NEW)
+
+Classic outrun racing aesthetic with hot pink and electric purple.
+
+```html
+<body data-theme="outrun"></body>
+```
+
+### 8. 🔍 Cyber Noir (NEW)
+
+Dark cyberpunk detective noir with red and mint accents.
+
+```html
+<body data-theme="cyber-noir"></body>
+```
+
 ## 🎯 Usage
 
-### Components
+### Buttons
+
+```html
+<!-- Primary button -->
+<button class="vapor-btn">Primary Button</button>
+
+<!-- Outline button -->
+<button class="vapor-btn-outline">Outline Button</button>
+
+<!-- Gradient button (NEW) -->
+<button class="vapor-btn-gradient">Gradient Button</button>
+
+<!-- Pill button (NEW) -->
+<button class="vapor-btn-pill">Pill Button</button>
+```
+
+### Badges (NEW)
+
+```html
+<span class="vapor-badge">Primary Badge</span>
+<span class="vapor-badge-secondary">Secondary Badge</span>
+```
+
+### Alerts (NEW)
+
+```html
+<div class="vapor-alert">Default alert message</div>
+<div class="vapor-alert-success">Success message</div>
+<div class="vapor-alert-warning">Warning message</div>
+<div class="vapor-alert-error">Error message</div>
+```
+
+### Form Elements (NEW)
+
+```html
+<!-- Input -->
+<input type="text" class="vapor-input" placeholder="Enter text..." />
+
+<!-- Textarea -->
+<textarea class="vapor-textarea" placeholder="Your message..."></textarea>
+
+<!-- Toggle switch -->
+<div class="vapor-toggle"></div>
+<div class="vapor-toggle vapor-toggle-active"></div>
+```
+
+### Progress Bar (NEW)
+
+```html
+<div class="vapor-progress">
+  <div class="vapor-progress-bar" style="width: 75%"></div>
+</div>
+```
+
+### Avatars (NEW)
+
+```html
+<div class="vapor-avatar vapor-avatar-sm">S</div>
+<div class="vapor-avatar">M</div>
+<div class="vapor-avatar vapor-avatar-lg">L</div>
+```
+
+### Stats (NEW)
+
+```html
+<div class="vapor-stats">
+  <div class="vapor-stat">
+    <div class="vapor-stat-value">2.4K</div>
+    <div class="vapor-stat-label">Downloads</div>
+  </div>
+</div>
+```
+
+### Tabs (NEW)
+
+```html
+<div class="vapor-tabs">
+  <button class="vapor-tab vapor-tab-active">Tab 1</button>
+  <button class="vapor-tab">Tab 2</button>
+  <button class="vapor-tab">Tab 3</button>
+</div>
+```
+
+### Table (NEW)
+
+```html
+<table class="vapor-table">
+  <thead>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Loading Spinners (NEW)
+
+```html
+<div class="vapor-loading vapor-loading-sm"></div>
+<div class="vapor-loading"></div>
+<div class="vapor-loading vapor-loading-lg"></div>
+```
+
+### Text Effects
 
 ```html
 <!-- Neon text effects -->
@@ -103,10 +249,19 @@ Cool chrome and silver with blue accents.
 <!-- Chrome text effect -->
 <h1 class="vapor-chrome">Metallic Chrome Text</h1>
 
-<!-- Buttons -->
-<button class="vapor-btn">Primary Button</button>
-<button class="vapor-btn-outline">Outline Button</button>
+<!-- Gradient text (NEW) -->
+<h1 class="gradient-text-vapor">Gradient Text</h1>
+<h1 class="gradient-text-sunset">Sunset Gradient</h1>
+<h1 class="gradient-text-outrun">Outrun Gradient</h1>
+<h1 class="gradient-text-rainbow">Rainbow Gradient</h1>
 
+<!-- Retro outline (NEW) -->
+<h1 class="retro-outline">Outline Text</h1>
+```
+
+### Cards & Containers
+
+```html
 <!-- Cards -->
 <div class="vapor-card">
   <h3 class="neon-text">Card Title</h3>
@@ -115,6 +270,12 @@ Cool chrome and silver with blue accents.
 
 <!-- Neon box -->
 <div class="vapor-box p-6">Neon bordered container</div>
+
+<!-- Panel (NEW) -->
+<div class="vapor-panel">Panel content</div>
+
+<!-- Holographic card (NEW) -->
+<div class="vapor-holographic p-6">Holographic content</div>
 
 <!-- Neon sign -->
 <div class="vapor-sign">OPEN 24/7</div>
@@ -131,6 +292,13 @@ Cool chrome and silver with blue accents.
 <div class="vapor-sunset">Sunset gradient</div>
 <div class="vapor-sunset-horizon">Horizon gradient</div>
 
+<!-- New backgrounds (Phase 2) -->
+<div class="vapor-starfield">Starfield background</div>
+<div class="vapor-holographic">Holographic effect</div>
+<div class="vapor-outrun">Outrun gradient</div>
+<div class="vapor-arcade">Arcade style</div>
+<div class="vapor-noir">Cyber noir style</div>
+
 <!-- Hero section with all effects -->
 <section class="vapor-hero vapor-scanlines">
   <!-- Content -->
@@ -145,6 +313,7 @@ Cool chrome and silver with blue accents.
 <div class="glow">Medium glow</div>
 <div class="glow-lg">Large glow</div>
 <div class="glow-xl">Extra large glow</div>
+<div class="glow-double">Double color glow (NEW)</div>
 
 <!-- Text shadows -->
 <p class="text-glow-sm">Small text glow</p>
@@ -159,20 +328,48 @@ Cool chrome and silver with blue accents.
 ### Animations
 
 ```html
-<!-- Glow pulse -->
+<!-- Existing animations -->
 <div class="animate-glow-pulse">Pulsing glow</div>
-
-<!-- Neon flicker -->
 <div class="animate-neon-flicker">Flickering neon</div>
-
-<!-- Floating effect -->
 <div class="animate-float">Floating element</div>
-
-<!-- Grid scroll -->
 <div class="vapor-grid animate-grid-scroll">Scrolling grid</div>
-
-<!-- Chrome shine -->
 <div class="animate-chrome-shine">Shiny chrome</div>
+
+<!-- New animations (Phase 2) -->
+<div class="animate-glitch">Glitch effect</div>
+<div class="animate-rainbow-shift">Rainbow color shift</div>
+<div class="animate-pulse-ring">Pulsing ring</div>
+<div class="animate-holographic">Holographic shimmer</div>
+<div class="animate-laser-scan">Laser scan</div>
+<div class="animate-star-twinkle">Twinkling stars</div>
+<div class="animate-neon-breathe">Breathing glow</div>
+<div class="animate-rotate-slow">Slow rotation</div>
+```
+
+### Code Blocks (NEW)
+
+```html
+<!-- Block code -->
+<pre class="vapor-code"><code>npm install tail-vapor</code></pre>
+
+<!-- Inline code -->
+<span class="vapor-code-inline">vapor-btn</span>
+```
+
+### Quote (NEW)
+
+```html
+<blockquote class="vapor-quote">"The future is not written."</blockquote>
+```
+
+### List (NEW)
+
+```html
+<ul class="vapor-list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
 ```
 
 ### Typography
@@ -185,6 +382,41 @@ Cool chrome and silver with blue accents.
 
 <!-- Vapor heading style -->
 <h1 class="vapor-heading">UPPERCASE HEADING</h1>
+
+<!-- Pixel text (NEW) -->
+<p class="vapor-pixel-text">Retro pixel text</p>
+
+<!-- Terminal text (NEW) -->
+<p class="vapor-terminal">Terminal style</p>
+```
+
+### Utility Classes (NEW)
+
+```html
+<!-- Backdrop blur -->
+<div class="backdrop-vapor">Blurred backdrop</div>
+<div class="backdrop-vapor-heavy">Heavy blur</div>
+
+<!-- CRT effect -->
+<div class="crt-effect">CRT scanlines</div>
+
+<!-- Vignette -->
+<div class="vignette">Vignette overlay</div>
+
+<!-- Clip paths -->
+<div class="clip-chevron">Chevron shape</div>
+<div class="clip-slant">Slanted edge</div>
+<div class="clip-diamond">Diamond shape</div>
+<div class="clip-hexagon">Hexagon shape</div>
+
+<!-- Filters -->
+<div class="filter-neon">Neon filter</div>
+<div class="filter-chrome">Chrome filter</div>
+<div class="filter-noir">Noir filter</div>
+
+<!-- Hover effects -->
+<div class="hover-glow">Glow on hover</div>
+<a class="hover-neon-text">Neon text on hover</a>
 ```
 
 ### Color Palette
@@ -201,11 +433,24 @@ Access the full vaporwave color palette:
 <div class="bg-vapor-teal">Teal</div>
 <div class="bg-vapor-chrome">Chrome</div>
 
+<!-- New colors (Phase 2) -->
+<div class="bg-vapor-neonGreen">Neon Green</div>
+<div class="bg-vapor-arcadeRed">Arcade Red</div>
+<div class="bg-vapor-hotPink">Hot Pink</div>
+<div class="bg-vapor-electricPurple">Electric Purple</div>
+<div class="bg-vapor-laserYellow">Laser Yellow</div>
+<div class="bg-vapor-neonRed">Neon Red</div>
+<div class="bg-vapor-mintGreen">Mint Green</div>
+<div class="bg-vapor-amber">Amber</div>
+<div class="bg-vapor-gold">Gold</div>
+<div class="bg-vapor-silver">Silver</div>
+
 <!-- Theme-aware colors -->
 <div class="bg-vapor">Theme background</div>
 <div class="bg-vapor-surface">Theme surface</div>
 <div class="text-vapor-primary">Theme primary</div>
 <div class="text-vapor-secondary">Theme secondary</div>
+<div class="text-vapor-tertiary">Theme tertiary (NEW)</div>
 <div class="border-vapor">Theme border</div>
 ```
 
@@ -225,6 +470,7 @@ All theme colors are available as CSS variables:
   --vapor-neon2: #ff00ff;
   --vapor-grid-color: #00fff5;
   --vapor-glow-color: #00fff5;
+  --vapor-tertiary: #ffff00; /* NEW */
 }
 ```
 
@@ -269,6 +515,12 @@ npm run build
 
 # Watch for changes during development
 npm run build:demo
+
+# Lint the code
+npm run lint
+
+# Format code
+npm run format
 ```
 
 ## 🤝 Contributing
@@ -291,6 +543,8 @@ Inspired by the aesthetics of:
 - Synthwave and vaporwave music
 - Neon-lit cities and sunset horizons
 - Cyberpunk visual culture
+- Classic arcade games
+- Outrun racing games
 
 ---
 

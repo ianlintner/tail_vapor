@@ -1,5 +1,6 @@
 /**
  * Tail Vapor - Base Styles
+ * Version 2.0 - Phase 2
  * Import this file in your main CSS to get all vaporwave utilities
  */
 
@@ -8,7 +9,7 @@
 @tailwind utilities;
 
 /* Import Google Fonts for vaporwave typography */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Audiowide&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Audiowide&family=Share+Tech+Mono&family=Press+Start+2P&family=VT323&display=swap');
 
 @layer base {
   /* Default theme variables (Neon City) */
@@ -23,6 +24,7 @@
     --vapor-neon2: #ff00ff;
     --vapor-grid-color: #00fff5;
     --vapor-glow-color: #00fff5;
+    --vapor-tertiary: #ffff00;
   }
 
   /* Smooth scrolling */
@@ -42,6 +44,30 @@
   ::selection {
     background-color: var(--vapor-neon1);
     color: var(--vapor-background);
+  }
+
+  /* Scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--vapor-neon1) var(--vapor-background);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--vapor-background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--vapor-neon1);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--vapor-neon2);
   }
 }
 
@@ -227,6 +253,289 @@
     content: '▶ ';
     color: var(--vapor-neon1);
   }
+
+  /* ==========================================
+   * Phase 2 CSS Components
+   * ========================================== */
+
+  /* Arcade pixel font text */
+  .vapor-pixel-text {
+    font-family: 'Press Start 2P', 'VT323', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* VT323 terminal font */
+  .vapor-terminal {
+    font-family: 'VT323', 'Share Tech Mono', monospace;
+    font-size: 1.25rem;
+  }
+
+  /* Bevel/embossed text effect */
+  .vapor-emboss {
+    text-shadow:
+      -1px -1px 0 rgba(0, 0, 0, 0.5),
+      1px 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 10px var(--vapor-neon1);
+  }
+
+  /* 3D text effect */
+  .vapor-3d-text {
+    text-shadow:
+      1px 1px 0 var(--vapor-neon2),
+      2px 2px 0 var(--vapor-neon2),
+      3px 3px 0 var(--vapor-neon2),
+      4px 4px 0 var(--vapor-neon2),
+      5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Cyber glow effect */
+  .vapor-cyber-glow {
+    box-shadow:
+      0 0 5px var(--vapor-neon1),
+      0 0 10px var(--vapor-neon1),
+      0 0 20px var(--vapor-neon1),
+      0 0 40px var(--vapor-neon1),
+      inset 0 0 5px rgba(0, 255, 245, 0.1);
+  }
+
+  /* Rotating border animation */
+  .vapor-border-spin {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vapor-border-spin::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      var(--vapor-neon1),
+      transparent,
+      var(--vapor-neon2),
+      transparent
+    );
+    animation: rotate-slow 4s linear infinite;
+  }
+
+  .vapor-border-spin::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--vapor-background);
+    border-radius: inherit;
+  }
+
+  /* Typewriter cursor */
+  .vapor-cursor {
+    border-right: 2px solid var(--vapor-neon1);
+    animation: typing-cursor 1s step-end infinite;
+  }
+
+  /* Scanline moving effect */
+  .vapor-scanline-move {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vapor-scanline-move::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--vapor-neon1), transparent);
+    animation: scanline 3s linear infinite;
+  }
+
+  /* Retro card with corner decorations */
+  .vapor-card-retro {
+    position: relative;
+    padding: 2rem;
+    background: var(--vapor-surface);
+    border: 2px solid var(--vapor-neon1);
+  }
+
+  .vapor-card-retro::before,
+  .vapor-card-retro::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--vapor-neon2);
+    border-style: solid;
+  }
+
+  .vapor-card-retro::before {
+    top: -2px;
+    left: -2px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .vapor-card-retro::after {
+    bottom: -2px;
+    right: -2px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* Moon element */
+  .vapor-moon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e0e0e0 0%, #a0a0a0 50%, #606060 100%);
+    box-shadow:
+      inset -10px -10px 20px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(255, 255, 255, 0.3);
+    position: relative;
+  }
+
+  .vapor-moon::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Animated equalizer bars */
+  .vapor-equalizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 40px;
+  }
+
+  .vapor-equalizer-bar {
+    width: 8px;
+    background: linear-gradient(0deg, var(--vapor-neon1), var(--vapor-neon2));
+    border-radius: 2px;
+    animation: wave 0.5s ease-in-out infinite alternate;
+  }
+
+  .vapor-equalizer-bar:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .vapor-equalizer-bar:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .vapor-equalizer-bar:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  .vapor-equalizer-bar:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+
+  /* Floppy disk decoration */
+  .vapor-floppy {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .vapor-floppy::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    width: 60%;
+    height: 35%;
+    background: #e0e0e0;
+    border-radius: 2px;
+  }
+
+  .vapor-floppy::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 30%;
+    background: var(--vapor-background);
+    border: 1px solid var(--vapor-neon1);
+  }
+
+  /* Glitch text subtle */
+  .vapor-glitch-subtle {
+    position: relative;
+  }
+
+  .vapor-glitch-subtle:hover {
+    animation: glitch 0.3s ease-in-out;
+  }
+
+  /* Neon underline */
+  .vapor-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .vapor-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--vapor-neon1);
+    box-shadow: 0 0 10px var(--vapor-neon1);
+  }
+
+  /* Animated underline */
+  .vapor-underline-animated::after {
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .vapor-underline-animated:hover::after {
+    width: 100%;
+  }
+
+  /* Section with decorative corners */
+  .vapor-section {
+    position: relative;
+    padding: 4rem 2rem;
+  }
+
+  .vapor-section::before,
+  .vapor-section::after {
+    content: '◢ ◣';
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--vapor-neon1);
+    text-shadow: 0 0 10px var(--vapor-neon1);
+  }
+
+  .vapor-section::before {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .vapor-section::after {
+    content: '◥ ◤';
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 @layer utilities {
@@ -261,5 +570,83 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     opacity: 0.05;
     pointer-events: none;
+  }
+
+  /* ==========================================
+   * Phase 2 CSS Utilities
+   * ========================================== */
+
+  /* Text stroke utilities */
+  .text-stroke-neon {
+    -webkit-text-stroke: 1px var(--vapor-neon1);
+    color: transparent;
+  }
+
+  .text-stroke-neon-thick {
+    -webkit-text-stroke: 2px var(--vapor-neon1);
+    color: transparent;
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow:
+      0 0 10px var(--vapor-neon1),
+      0 0 20px var(--vapor-neon1),
+      0 0 30px var(--vapor-neon1);
+  }
+
+  /* Hover neon text */
+  .hover-neon-text {
+    transition: all 0.3s ease;
+  }
+
+  .hover-neon-text:hover {
+    color: var(--vapor-neon1);
+    text-shadow:
+      0 0 10px var(--vapor-neon1),
+      0 0 20px var(--vapor-neon1);
+  }
+
+  /* Gradient border */
+  .border-gradient-vapor {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--vapor-surface), var(--vapor-surface)) padding-box,
+      linear-gradient(90deg, var(--vapor-neon1), var(--vapor-neon2)) border-box;
+  }
+
+  /* Glass effect */
+  .glass-vapor {
+    background: rgba(13, 2, 33, 0.5);
+    backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0, 255, 245, 0.2);
+  }
+
+  /* Frosted glass */
+  .frosted-vapor {
+    background: rgba(25, 5, 53, 0.7);
+    backdrop-filter: blur(16px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Perspective utilities */
+  .perspective-vapor {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .motion-reduce-hidden {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
