@@ -1,0 +1,1508 @@
+/**
+ * Tail Vapor - Base Styles
+ * Import this file in your main CSS to get all vaporwave utilities
+ */
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/*! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
+ */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+
+:root {
+  --vapor-grid-color: #00fff5;
+  --vapor-glow-color: #00fff5;
+}
+
+[data-theme="sunset"] {
+  --vapor-primary: #ff6b35;
+  --vapor-secondary: #f7c59f;
+  --vapor-accent: #ff2e63;
+  --vapor-background: #1a1a2e;
+  --vapor-surface: #16213e;
+  --vapor-text: #eaeaea;
+  --vapor-neon1: #ff6b35;
+  --vapor-neon2: #ff2e63;
+  --vapor-grid-color: #ff6b35;
+  --vapor-glow-color: #ff6b35;
+}
+
+[data-theme="neon-city"] {
+  --vapor-primary: #00fff5;
+  --vapor-secondary: #ff00ff;
+  --vapor-accent: #7b2cbf;
+  --vapor-background: #0d0221;
+  --vapor-surface: #190535;
+  --vapor-text: #e0e0ff;
+  --vapor-neon1: #00fff5;
+  --vapor-neon2: #ff00ff;
+  --vapor-grid-color: #00fff5;
+  --vapor-glow-color: #00fff5;
+}
+
+[data-theme="miami-vice"] {
+  --vapor-primary: #41ead4;
+  --vapor-secondary: #ff6eff;
+  --vapor-accent: #f9f871;
+  --vapor-background: #011627;
+  --vapor-surface: #023047;
+  --vapor-text: #f0f4f8;
+  --vapor-neon1: #41ead4;
+  --vapor-neon2: #ff6eff;
+  --vapor-grid-color: #41ead4;
+  --vapor-glow-color: #41ead4;
+}
+
+[data-theme="digital-dreams"] {
+  --vapor-primary: #8b5cf6;
+  --vapor-secondary: #06b6d4;
+  --vapor-accent: #f472b6;
+  --vapor-background: #0f0f23;
+  --vapor-surface: #1e1b4b;
+  --vapor-text: #e2e8f0;
+  --vapor-neon1: #8b5cf6;
+  --vapor-neon2: #06b6d4;
+  --vapor-grid-color: #8b5cf6;
+  --vapor-glow-color: #8b5cf6;
+}
+
+[data-theme="midnight-chrome"] {
+  --vapor-primary: #64ffda;
+  --vapor-secondary: #a78bfa;
+  --vapor-accent: #f0abfc;
+  --vapor-background: #0a0a0f;
+  --vapor-surface: #18181b;
+  --vapor-text: #d4d4d8;
+  --vapor-neon1: #64ffda;
+  --vapor-neon2: #a78bfa;
+  --vapor-grid-color: #64ffda;
+  --vapor-glow-color: #64ffda;
+}
+
+/* Default theme variables (Neon City) */
+
+:root {
+  --vapor-primary: #00fff5;
+  --vapor-secondary: #ff00ff;
+  --vapor-accent: #7b2cbf;
+  --vapor-background: #0d0221;
+  --vapor-surface: #190535;
+  --vapor-text: #e0e0ff;
+  --vapor-neon1: #00fff5;
+  --vapor-neon2: #ff00ff;
+  --vapor-grid-color: #00fff5;
+  --vapor-glow-color: #00fff5;
+}
+
+/* Smooth scrolling */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Default body styles for vaporwave */
+
+body.vapor-body {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: var(--vapor-background);
+  color: var(--vapor-text);
+  min-height: 100vh;
+}
+
+/* Selection styling */
+
+::-moz-selection {
+  background-color: var(--vapor-neon1);
+  color: var(--vapor-background);
+}
+
+::selection {
+  background-color: var(--vapor-neon1);
+  color: var(--vapor-background);
+}
+
+.vapor-text {
+  color: var(--vapor-text, #eaeaea);
+  font-family: "Rajdhani", "Orbitron", sans-serif;
+}
+
+.vapor-heading {
+  font-family: "Orbitron", "Audiowide", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.neon-text {
+  color: var(--vapor-neon1, #00fff5);
+  text-shadow: 0 0 7px var(--vapor-neon1, #00fff5), 0 0 10px var(--vapor-neon1, #00fff5), 0 0 21px var(--vapor-neon1, #00fff5), 0 0 42px var(--vapor-neon1, #00fff5);
+}
+
+.neon-text-secondary {
+  color: var(--vapor-neon2, #ff00ff);
+  text-shadow: 0 0 7px var(--vapor-neon2, #ff00ff), 0 0 10px var(--vapor-neon2, #ff00ff), 0 0 21px var(--vapor-neon2, #ff00ff), 0 0 42px var(--vapor-neon2, #ff00ff);
+}
+
+.vapor-grid {
+  position: relative;
+  background-color: var(--vapor-background, #0d0221);
+  background-image: 
+          linear-gradient(var(--vapor-grid-color, #00fff5) 1px, transparent 1px),
+          linear-gradient(90deg, var(--vapor-grid-color, #00fff5) 1px, transparent 1px)
+        ;
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+.vapor-grid-perspective {
+  position: relative;
+  background-color: var(--vapor-background, #0d0221);
+  background-image: 
+          linear-gradient(transparent 65%, var(--vapor-grid-color, #00fff5) 65%),
+          repeating-linear-gradient(90deg, transparent, transparent 49px, var(--vapor-grid-color, #00fff5) 50px)
+        ;
+  background-size: 100% 200px, 50px 100%;
+  background-position: bottom;
+}
+
+.vapor-sunset {
+  background: linear-gradient(180deg, #ff6b35 0%, #ff2e63 35%, #7b2cbf 70%, #1a1a2e 100%);
+}
+
+.vapor-sunset-horizon {
+  background: linear-gradient(180deg, #0d0221 0%, #0d0221 40%, #7b2cbf 60%, #ff2e63 80%, #ff6b35 100%);
+}
+
+.vapor-sun {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ff6b35 0%, #ff2e63 50%, #ff6b35 100%);
+  box-shadow: 0 0 60px #ff6b35, 0 0 100px #ff2e63;
+  position: relative;
+}
+
+.vapor-sun::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, #0d0221 8px, #0d0221 16px);
+}
+
+.vapor-box {
+  background-color: var(--vapor-surface, #190535);
+  border: 2px solid var(--vapor-neon1, #00fff5);
+  box-shadow: 0 0 10px var(--vapor-neon1, #00fff5), inset 0 0 10px rgba(0, 255, 245, 0.1);
+}
+
+.vapor-card {
+  background-color: var(--vapor-surface, #190535);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--vapor-neon1, #00fff5);
+  box-shadow: 0 0 20px rgba(0, 255, 245, 0.2);
+  color: var(--vapor-text, #eaeaea);
+}
+
+.vapor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--vapor-background, #0d0221);
+  background-color: var(--vapor-neon1, #00fff5);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5);
+}
+
+.vapor-btn:hover {
+  background-color: var(--vapor-neon2, #ff00ff);
+  box-shadow: 0 0 15px var(--vapor-neon2, #ff00ff), 0 0 30px var(--vapor-neon2, #ff00ff);
+}
+
+.vapor-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--vapor-neon1, #00fff5);
+  background-color: transparent;
+  border: 2px solid var(--vapor-neon1, #00fff5);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--vapor-neon1, #00fff5);
+}
+
+.vapor-btn-outline:hover {
+  color: var(--vapor-background, #0d0221);
+  background-color: var(--vapor-neon1, #00fff5);
+  box-shadow: 0 0 20px var(--vapor-neon1, #00fff5), 0 0 40px var(--vapor-neon1, #00fff5);
+}
+
+.vapor-scanlines {
+  position: relative;
+}
+
+.vapor-scanlines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.3) 2px, rgba(0, 0, 0, 0.3) 4px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vapor-chrome {
+  background: linear-gradient(180deg, #fff 0%, #d4d4d8 25%, #fff 50%, #a1a1aa 75%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+}
+
+/* Additional vapor components */
+
+/* Hero section with sunset */
+
+.vapor-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, 
+      var(--vapor-background) 0%, 
+      var(--vapor-surface) 30%,
+      #7b2cbf 60%, 
+      #ff2e63 80%, 
+      #ff6b35 100%
+    );
+}
+
+/* Perspective grid floor */
+
+.vapor-floor {
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+  height: 50%;
+  background: 
+      linear-gradient(180deg, transparent 0%, var(--vapor-background) 100%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 49px,
+        var(--vapor-grid-color) 50px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 49px,
+        var(--vapor-grid-color) 50px
+      );
+  background-size: 100% 100%, 50px 100%, 100% 50px;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center top;
+}
+
+/* Mountains silhouette */
+
+.vapor-mountains {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: var(--vapor-background);
+  clip-path: polygon(
+      0% 100%,
+      10% 60%,
+      20% 80%,
+      35% 40%,
+      50% 70%,
+      65% 30%,
+      80% 60%,
+      90% 45%,
+      100% 100%
+    );
+}
+
+/* Palm tree silhouette (CSS only) */
+
+.vapor-palm {
+  position: relative;
+  width: 100px;
+  height: 250px;
+}
+
+.vapor-palm::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 150px;
+  background: linear-gradient(180deg, #2d1b4e 0%, #1a0f2e 100%);
+  border-radius: 10px 10px 5px 5px;
+}
+
+/* City skyline */
+
+.vapor-skyline {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: var(--vapor-background);
+}
+
+/* Neon sign */
+
+.vapor-sign {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 3px solid var(--vapor-neon1);
+  border-radius: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vapor-neon1);
+  text-shadow: 
+      0 0 7px var(--vapor-neon1),
+      0 0 10px var(--vapor-neon1),
+      0 0 21px var(--vapor-neon1);
+  box-shadow: 
+      0 0 7px var(--vapor-neon1),
+      0 0 10px var(--vapor-neon1),
+      inset 0 0 7px var(--vapor-neon1);
+  animation: neon-flicker 0.15s ease-in-out infinite;
+}
+
+/* Retro TV effect */
+
+.vapor-tv {
+  position: relative;
+  border: 20px solid #333;
+  border-radius: 20px;
+  box-shadow: 
+      inset 0 0 50px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.vapor-tv::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+      );
+  pointer-events: none;
+}
+
+/* VHS tracking effect */
+
+.vapor-vhs {
+  position: relative;
+}
+
+.vapor-vhs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.1) 20%,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 60%,
+      transparent 80%
+    );
+  animation: scanline 8s linear infinite;
+  z-index: 100;
+}
+
+/* Cassette tape decoration */
+
+.vapor-cassette {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.vapor-cassette::before {
+  content: '▶ ';
+  color: var(--vapor-neon1);
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.top-1\/4 {
+  top: 25%;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-48 {
+  height: 12rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+  }
+
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2) blur(2px);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.animate-grid-scroll {
+  animation: grid-scroll 20s linear infinite;
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 4px var(--tw-shadow-color), 0 0 11px var(--tw-shadow-color), 0 0 19px var(--tw-shadow-color);
+  }
+
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+.animate-neon-flicker {
+  animation: neon-flicker 0.15s ease-in-out infinite;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-vapor {
+  font-family: "Rajdhani", "Orbitron", sans-serif;
+}
+
+.font-vaporDisplay {
+  font-family: "Orbitron", "Audiowide", sans-serif;
+}
+
+.font-vaporMono {
+  font-family: "Share Tech Mono", monospace;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.opacity-40 {
+  opacity: 0.4;
+}
+
+.opacity-60 {
+  opacity: 0.6;
+}
+
+.opacity-70 {
+  opacity: 0.7;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.backdrop-filter {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-sm {
+  box-shadow: 0 0 5px var(--vapor-glow-color, #00fff5);
+}
+
+.glow {
+  box-shadow: 0 0 10px var(--vapor-glow-color, #00fff5), 0 0 20px var(--vapor-glow-color, #00fff5);
+}
+
+.glow-lg {
+  box-shadow: 0 0 20px var(--vapor-glow-color, #00fff5), 0 0 40px var(--vapor-glow-color, #00fff5), 0 0 60px var(--vapor-glow-color, #00fff5);
+}
+
+.glow-xl {
+  box-shadow: 0 0 30px var(--vapor-glow-color, #00fff5), 0 0 60px var(--vapor-glow-color, #00fff5), 0 0 90px var(--vapor-glow-color, #00fff5);
+}
+
+.text-glow-sm {
+  text-shadow: 0 0 5px var(--vapor-glow-color, #00fff5);
+}
+
+.text-glow {
+  text-shadow: 0 0 7px var(--vapor-glow-color, #00fff5), 0 0 10px var(--vapor-glow-color, #00fff5), 0 0 21px var(--vapor-glow-color, #00fff5);
+}
+
+.text-glow-lg {
+  text-shadow: 0 0 7px var(--vapor-glow-color, #00fff5), 0 0 10px var(--vapor-glow-color, #00fff5), 0 0 21px var(--vapor-glow-color, #00fff5), 0 0 42px var(--vapor-glow-color, #00fff5), 0 0 82px var(--vapor-glow-color, #00fff5);
+}
+
+.bg-vapor {
+  background-color: var(--vapor-background, #0d0221);
+}
+
+.bg-vapor-surface {
+  background-color: var(--vapor-surface, #190535);
+}
+
+.border-vapor {
+  border-color: var(--vapor-neon1, #00fff5);
+}
+
+.border-vapor-secondary {
+  border-color: var(--vapor-neon2, #ff00ff);
+}
+
+.text-vapor-primary {
+  color: var(--vapor-primary);
+}
+
+.text-vapor-secondary {
+  color: var(--vapor-secondary);
+}
+
+.text-vapor-accent {
+  color: var(--vapor-accent);
+}
+
+/* Additional utility classes */
+
+/* Gradient text */
+
+.gradient-text-vapor {
+  background: linear-gradient(90deg, var(--vapor-neon1), var(--vapor-neon2));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Blur backdrop */
+
+.backdrop-vapor {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(13, 2, 33, 0.8);
+}
+
+/* Noise texture overlay */
+
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Import Google Fonts for vaporwave typography */
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
