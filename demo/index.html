@@ -1,443 +1,482 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tail Vapor - Vaporwave Tailwind Theme Demo</title>
-  <link rel="stylesheet" href="output.css">
-  <style>
-    /* Theme switcher styles */
-    .theme-switcher {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      background: rgba(13, 2, 33, 0.9);
-      border: 1px solid var(--vapor-neon1);
-      border-radius: 0.5rem;
-      backdrop-filter: blur(10px);
-    }
-    
-    .theme-btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border: 1px solid currentColor;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .theme-btn:hover {
-      transform: scale(1.05);
-    }
-    
-    .theme-btn.active {
-      box-shadow: 0 0 10px currentColor;
-    }
-    
-    .theme-btn-sunset { color: #ff6b35; background: transparent; }
-    .theme-btn-neon { color: #00fff5; background: transparent; }
-    .theme-btn-miami { color: #41ead4; background: transparent; }
-    .theme-btn-digital { color: #8b5cf6; background: transparent; }
-    .theme-btn-chrome { color: #64ffda; background: transparent; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tail Vapor - Vaporwave Tailwind Theme Demo</title>
+    <link rel="stylesheet" href="output.css" />
+    <style>
+      /* Theme switcher styles */
+      .theme-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: rgba(13, 2, 33, 0.9);
+        border: 1px solid var(--vapor-neon1);
+        border-radius: 0.5rem;
+        backdrop-filter: blur(10px);
+      }
 
-    /* Background music player styles */
-    .music-player {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1rem;
-      background: rgba(13, 2, 33, 0.9);
-      border: 1px solid var(--vapor-neon1);
-      border-radius: 0.5rem;
-      backdrop-filter: blur(10px);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--vapor-text);
-    }
+      .theme-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 1px solid currentColor;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-    .music-player button {
-      background: transparent;
-      border: 1px solid var(--vapor-neon1);
-      color: var(--vapor-neon1);
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+      .theme-btn:hover {
+        transform: scale(1.05);
+      }
 
-    .music-player button:hover {
-      background: var(--vapor-neon1);
-      color: var(--vapor-background);
-    }
+      .theme-btn.active {
+        box-shadow: 0 0 10px currentColor;
+      }
 
-    /* Animated sun stripe effect */
-    .sun-stripes {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 8px,
-        var(--vapor-background) 8px,
-        var(--vapor-background) 16px
-      );
-      clip-path: ellipse(100px 100px at 50% 0%);
-    }
-  </style>
-</head>
-<body class="vapor-body" data-theme="neon-city">
-  <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <span class="text-xs text-vapor-text opacity-70 mb-1">Theme</span>
-    <button class="theme-btn theme-btn-sunset" onclick="setTheme('sunset')">Sunset</button>
-    <button class="theme-btn theme-btn-neon active" onclick="setTheme('neon-city')">Neon City</button>
-    <button class="theme-btn theme-btn-miami" onclick="setTheme('miami-vice')">Miami Vice</button>
-    <button class="theme-btn theme-btn-digital" onclick="setTheme('digital-dreams')">Digital Dreams</button>
-    <button class="theme-btn theme-btn-chrome" onclick="setTheme('midnight-chrome')">Midnight Chrome</button>
-  </div>
+      .theme-btn-sunset {
+        color: #ff6b35;
+        background: transparent;
+      }
+      .theme-btn-neon {
+        color: #00fff5;
+        background: transparent;
+      }
+      .theme-btn-miami {
+        color: #41ead4;
+        background: transparent;
+      }
+      .theme-btn-digital {
+        color: #8b5cf6;
+        background: transparent;
+      }
+      .theme-btn-chrome {
+        color: #64ffda;
+        background: transparent;
+      }
 
-  <!-- Music Player -->
-  <div class="music-player">
-    <span>♪ SYNTHWAVE MIX</span>
-    <button onclick="toggleMusic()" id="musicBtn">▶</button>
-    <audio id="bgMusic" loop>
-      <!-- Add your own synthwave track URL here -->
-      <source src="" type="audio/mpeg">
-    </audio>
-  </div>
+      /* Background music player styles */
+      .music-player {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: rgba(13, 2, 33, 0.9);
+        border: 1px solid var(--vapor-neon1);
+        border-radius: 0.5rem;
+        backdrop-filter: blur(10px);
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--vapor-text);
+      }
 
-  <!-- Hero Section -->
-  <section class="vapor-hero vapor-scanlines relative">
-    <!-- Sun -->
-    <div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div class="vapor-sun animate-glow-pulse"></div>
+      .music-player button {
+        background: transparent;
+        border: 1px solid var(--vapor-neon1);
+        color: var(--vapor-neon1);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .music-player button:hover {
+        background: var(--vapor-neon1);
+        color: var(--vapor-background);
+      }
+
+      /* Animated sun stripe effect */
+      .sun-stripes {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 8px,
+          var(--vapor-background) 8px,
+          var(--vapor-background) 16px
+        );
+        clip-path: ellipse(100px 100px at 50% 0%);
+      }
+    </style>
+  </head>
+  <body class="vapor-body" data-theme="neon-city">
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <span class="text-xs text-vapor-text opacity-70 mb-1">Theme</span>
+      <button class="theme-btn theme-btn-sunset" onclick="setTheme('sunset')">Sunset</button>
+      <button class="theme-btn theme-btn-neon active" onclick="setTheme('neon-city')">
+        Neon City
+      </button>
+      <button class="theme-btn theme-btn-miami" onclick="setTheme('miami-vice')">Miami Vice</button>
+      <button class="theme-btn theme-btn-digital" onclick="setTheme('digital-dreams')">
+        Digital Dreams
+      </button>
+      <button class="theme-btn theme-btn-chrome" onclick="setTheme('midnight-chrome')">
+        Midnight Chrome
+      </button>
     </div>
-    
-    <!-- Mountains silhouette -->
-    <div class="vapor-mountains"></div>
-    
-    <!-- Perspective Grid Floor -->
-    <div class="vapor-floor animate-grid-scroll"></div>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 text-center px-4">
-      <h1 class="text-6xl md:text-8xl font-vaporDisplay vapor-chrome mb-4 animate-float">
-        TAIL VAPOR
-      </h1>
-      <p class="text-xl md:text-2xl neon-text font-vapor mb-8">
-        Vaporwave • Synthwave • Cyberpunk
-      </p>
-      <p class="text-lg text-vapor-text opacity-80 max-w-2xl mx-auto mb-8">
-        A nostalgic Tailwind CSS theme inspired by 80s retro-futurism, 
-        neon-lit cities, and sunset horizons.
-      </p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="#features" class="vapor-btn">Explore</a>
-        <a href="#install" class="vapor-btn-outline">Install</a>
-      </div>
+    <!-- Music Player -->
+    <div class="music-player">
+      <span>♪ SYNTHWAVE MIX</span>
+      <button onclick="toggleMusic()" id="musicBtn">▶</button>
+      <audio id="bgMusic" loop>
+        <!-- Add your own synthwave track URL here -->
+        <source src="" type="audio/mpeg" />
+      </audio>
     </div>
-  </section>
 
-  <!-- Features Section -->
-  <section id="features" class="min-h-screen bg-vapor py-20 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
-        Features
-      </h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Feature Card 1 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">🎨</div>
-          <h3 class="text-xl font-vaporDisplay neon-text mb-2">5 Theme Variations</h3>
-          <p class="text-vapor-text opacity-80">
-            Choose from Sunset, Neon City, Miami Vice, Digital Dreams, or Midnight Chrome.
-          </p>
-        </div>
-        
-        <!-- Feature Card 2 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">✨</div>
-          <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Neon Glow Effects</h3>
-          <p class="text-vapor-text opacity-80">
-            Beautiful glow utilities for text, borders, and box shadows.
-          </p>
-        </div>
-        
-        <!-- Feature Card 3 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">📐</div>
-          <h3 class="text-xl font-vaporDisplay neon-text mb-2">Retro Grids</h3>
-          <p class="text-vapor-text opacity-80">
-            Perspective grid backgrounds with smooth scrolling animations.
-          </p>
-        </div>
-        
-        <!-- Feature Card 4 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">🌅</div>
-          <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Sunset Gradients</h3>
-          <p class="text-vapor-text opacity-80">
-            Pre-built sunset and horizon gradient backgrounds.
-          </p>
-        </div>
-        
-        <!-- Feature Card 5 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">🔤</div>
-          <h3 class="text-xl font-vaporDisplay neon-text mb-2">Retro Typography</h3>
-          <p class="text-vapor-text opacity-80">
-            Curated fonts including Orbitron, Rajdhani, and Share Tech Mono.
-          </p>
-        </div>
-        
-        <!-- Feature Card 6 -->
-        <div class="vapor-card">
-          <div class="text-4xl mb-4">🎬</div>
-          <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Animations</h3>
-          <p class="text-vapor-text opacity-80">
-            Glow pulse, neon flicker, floating, and scanline effects.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Color Palettes Section -->
-  <section id="themes" class="min-h-screen bg-vapor-surface py-20 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
-        Theme Variations
-      </h2>
-      
-      <!-- Sunset Theme -->
-      <div class="mb-12 vapor-box p-6 rounded-lg">
-        <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #ff6b35;">🌅 Sunset Boulevard</h3>
-        <p class="text-vapor-text opacity-80 mb-4">Warm sunset colors with orange and pink gradients.</p>
-        <div class="flex flex-wrap gap-4">
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff6b35;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f7c59f;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff2e63;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #1a1a2e;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #16213e;"></div>
-        </div>
-      </div>
-      
-      <!-- Neon City Theme -->
-      <div class="mb-12 vapor-box p-6 rounded-lg">
-        <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #00fff5;">🌃 Neon City</h3>
-        <p class="text-vapor-text opacity-80 mb-4">Electric blues and magentas of urban nightlife.</p>
-        <div class="flex flex-wrap gap-4">
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #00fff5;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff00ff;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #7b2cbf;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0d0221;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #190535;"></div>
-        </div>
-      </div>
-      
-      <!-- Miami Vice Theme -->
-      <div class="mb-12 vapor-box p-6 rounded-lg">
-        <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #41ead4;">🌴 Miami Vice</h3>
-        <p class="text-vapor-text opacity-80 mb-4">Teal and pink Miami sunset vibes.</p>
-        <div class="flex flex-wrap gap-4">
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #41ead4;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff6eff;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f9f871;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #011627;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #023047;"></div>
-        </div>
-      </div>
-      
-      <!-- Digital Dreams Theme -->
-      <div class="mb-12 vapor-box p-6 rounded-lg">
-        <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #8b5cf6;">💜 Digital Dreams</h3>
-        <p class="text-vapor-text opacity-80 mb-4">Purple and blue digital aesthetic.</p>
-        <div class="flex flex-wrap gap-4">
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #8b5cf6;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #06b6d4;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f472b6;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0f0f23;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #1e1b4b;"></div>
-        </div>
-      </div>
-      
-      <!-- Midnight Chrome Theme -->
-      <div class="vapor-box p-6 rounded-lg">
-        <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #64ffda;">🌙 Midnight Chrome</h3>
-        <p class="text-vapor-text opacity-80 mb-4">Cool chrome and silver with blue accents.</p>
-        <div class="flex flex-wrap gap-4">
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #64ffda;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #a78bfa;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f0abfc;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0a0a0f;"></div>
-          <div class="w-16 h-16 rounded-lg glow-sm" style="background: #18181b;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Components Demo Section -->
-  <section id="components" class="min-h-screen bg-vapor py-20 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
-        Components
-      </h2>
-      
-      <!-- Buttons -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Buttons</h3>
-        <div class="flex flex-wrap gap-4">
-          <button class="vapor-btn">Primary Button</button>
-          <button class="vapor-btn-outline">Outline Button</button>
-        </div>
-      </div>
-      
-      <!-- Neon Text -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Neon Text Effects</h3>
-        <p class="text-4xl neon-text mb-4">Neon Primary Glow</p>
-        <p class="text-4xl neon-text-secondary mb-4">Neon Secondary Glow</p>
-        <p class="text-4xl vapor-chrome">Chrome Text Effect</p>
-      </div>
-      
-      <!-- Neon Sign -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Neon Sign</h3>
-        <div class="vapor-sign text-3xl animate-neon-flicker">Open 24/7</div>
-      </div>
-      
-      <!-- Grid Backgrounds -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Grid Backgrounds</h3>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="vapor-grid h-48 rounded-lg flex items-center justify-center">
-            <span class="text-vapor-text font-vapor">.vapor-grid</span>
-          </div>
-          <div class="vapor-grid-perspective h-48 rounded-lg flex items-end justify-center pb-4">
-            <span class="text-vapor-text font-vapor">.vapor-grid-perspective</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Glow Utilities -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Glow Utilities</h3>
-        <div class="flex flex-wrap gap-8">
-          <div class="w-24 h-24 bg-vapor-surface rounded-lg glow-sm flex items-center justify-center">
-            <span class="text-xs">.glow-sm</span>
-          </div>
-          <div class="w-24 h-24 bg-vapor-surface rounded-lg glow flex items-center justify-center">
-            <span class="text-xs">.glow</span>
-          </div>
-          <div class="w-24 h-24 bg-vapor-surface rounded-lg glow-lg flex items-center justify-center">
-            <span class="text-xs">.glow-lg</span>
-          </div>
-          <div class="w-24 h-24 bg-vapor-surface rounded-lg glow-xl flex items-center justify-center">
-            <span class="text-xs">.glow-xl</span>
-          </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="vapor-hero vapor-scanlines relative">
+      <!-- Sun -->
+      <div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="vapor-sun animate-glow-pulse"></div>
       </div>
 
-      <!-- Cassette -->
-      <div class="mb-16">
-        <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Retro Elements</h3>
-        <span class="vapor-cassette">Now Playing: Synthwave Mix Vol. 1</span>
-      </div>
-    </div>
-  </section>
+      <!-- Mountains silhouette -->
+      <div class="vapor-mountains"></div>
 
-  <!-- Installation Section -->
-  <section id="install" class="min-h-screen bg-vapor-surface py-20 px-4">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
-        Installation
-      </h2>
-      
-      <div class="vapor-card mb-8">
-        <h3 class="text-xl font-vaporDisplay neon-text mb-4">1. Install the package</h3>
-        <pre class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"><code class="text-vapor-text">npm install tail-vapor</code></pre>
+      <!-- Perspective Grid Floor -->
+      <div class="vapor-floor animate-grid-scroll"></div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 text-center px-4">
+        <h1 class="text-6xl md:text-8xl font-vaporDisplay vapor-chrome mb-4 animate-float">
+          TAIL VAPOR
+        </h1>
+        <p class="text-xl md:text-2xl neon-text font-vapor mb-8">
+          Vaporwave • Synthwave • Cyberpunk
+        </p>
+        <p class="text-lg text-vapor-text opacity-80 max-w-2xl mx-auto mb-8">
+          A nostalgic Tailwind CSS theme inspired by 80s retro-futurism, neon-lit cities, and sunset
+          horizons.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="#features" class="vapor-btn">Explore</a>
+          <a href="#install" class="vapor-btn-outline">Install</a>
+        </div>
       </div>
-      
-      <div class="vapor-card mb-8">
-        <h3 class="text-xl font-vaporDisplay neon-text mb-4">2. Add to tailwind.config.js</h3>
-        <pre class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"><code class="text-vapor-text">module.exports = {
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="min-h-screen bg-vapor py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">Features</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature Card 1 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">🎨</div>
+            <h3 class="text-xl font-vaporDisplay neon-text mb-2">5 Theme Variations</h3>
+            <p class="text-vapor-text opacity-80">
+              Choose from Sunset, Neon City, Miami Vice, Digital Dreams, or Midnight Chrome.
+            </p>
+          </div>
+
+          <!-- Feature Card 2 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">✨</div>
+            <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Neon Glow Effects</h3>
+            <p class="text-vapor-text opacity-80">
+              Beautiful glow utilities for text, borders, and box shadows.
+            </p>
+          </div>
+
+          <!-- Feature Card 3 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">📐</div>
+            <h3 class="text-xl font-vaporDisplay neon-text mb-2">Retro Grids</h3>
+            <p class="text-vapor-text opacity-80">
+              Perspective grid backgrounds with smooth scrolling animations.
+            </p>
+          </div>
+
+          <!-- Feature Card 4 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">🌅</div>
+            <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Sunset Gradients</h3>
+            <p class="text-vapor-text opacity-80">
+              Pre-built sunset and horizon gradient backgrounds.
+            </p>
+          </div>
+
+          <!-- Feature Card 5 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">🔤</div>
+            <h3 class="text-xl font-vaporDisplay neon-text mb-2">Retro Typography</h3>
+            <p class="text-vapor-text opacity-80">
+              Curated fonts including Orbitron, Rajdhani, and Share Tech Mono.
+            </p>
+          </div>
+
+          <!-- Feature Card 6 -->
+          <div class="vapor-card">
+            <div class="text-4xl mb-4">🎬</div>
+            <h3 class="text-xl font-vaporDisplay neon-text-secondary mb-2">Animations</h3>
+            <p class="text-vapor-text opacity-80">
+              Glow pulse, neon flicker, floating, and scanline effects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Palettes Section -->
+    <section id="themes" class="min-h-screen bg-vapor-surface py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
+          Theme Variations
+        </h2>
+
+        <!-- Sunset Theme -->
+        <div class="mb-12 vapor-box p-6 rounded-lg">
+          <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #ff6b35">
+            🌅 Sunset Boulevard
+          </h3>
+          <p class="text-vapor-text opacity-80 mb-4">
+            Warm sunset colors with orange and pink gradients.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff6b35"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f7c59f"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff2e63"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #1a1a2e"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #16213e"></div>
+          </div>
+        </div>
+
+        <!-- Neon City Theme -->
+        <div class="mb-12 vapor-box p-6 rounded-lg">
+          <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #00fff5">🌃 Neon City</h3>
+          <p class="text-vapor-text opacity-80 mb-4">
+            Electric blues and magentas of urban nightlife.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #00fff5"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff00ff"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #7b2cbf"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0d0221"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #190535"></div>
+          </div>
+        </div>
+
+        <!-- Miami Vice Theme -->
+        <div class="mb-12 vapor-box p-6 rounded-lg">
+          <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #41ead4">🌴 Miami Vice</h3>
+          <p class="text-vapor-text opacity-80 mb-4">Teal and pink Miami sunset vibes.</p>
+          <div class="flex flex-wrap gap-4">
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #41ead4"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #ff6eff"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f9f871"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #011627"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #023047"></div>
+          </div>
+        </div>
+
+        <!-- Digital Dreams Theme -->
+        <div class="mb-12 vapor-box p-6 rounded-lg">
+          <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #8b5cf6">💜 Digital Dreams</h3>
+          <p class="text-vapor-text opacity-80 mb-4">Purple and blue digital aesthetic.</p>
+          <div class="flex flex-wrap gap-4">
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #8b5cf6"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #06b6d4"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f472b6"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0f0f23"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #1e1b4b"></div>
+          </div>
+        </div>
+
+        <!-- Midnight Chrome Theme -->
+        <div class="vapor-box p-6 rounded-lg">
+          <h3 class="text-2xl font-vaporDisplay mb-4" style="color: #64ffda">🌙 Midnight Chrome</h3>
+          <p class="text-vapor-text opacity-80 mb-4">Cool chrome and silver with blue accents.</p>
+          <div class="flex flex-wrap gap-4">
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #64ffda"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #a78bfa"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #f0abfc"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #0a0a0f"></div>
+            <div class="w-16 h-16 rounded-lg glow-sm" style="background: #18181b"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components Demo Section -->
+    <section id="components" class="min-h-screen bg-vapor py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
+          Components
+        </h2>
+
+        <!-- Buttons -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Buttons</h3>
+          <div class="flex flex-wrap gap-4">
+            <button class="vapor-btn">Primary Button</button>
+            <button class="vapor-btn-outline">Outline Button</button>
+          </div>
+        </div>
+
+        <!-- Neon Text -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Neon Text Effects</h3>
+          <p class="text-4xl neon-text mb-4">Neon Primary Glow</p>
+          <p class="text-4xl neon-text-secondary mb-4">Neon Secondary Glow</p>
+          <p class="text-4xl vapor-chrome">Chrome Text Effect</p>
+        </div>
+
+        <!-- Neon Sign -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Neon Sign</h3>
+          <div class="vapor-sign text-3xl animate-neon-flicker">Open 24/7</div>
+        </div>
+
+        <!-- Grid Backgrounds -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Grid Backgrounds</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="vapor-grid h-48 rounded-lg flex items-center justify-center">
+              <span class="text-vapor-text font-vapor">.vapor-grid</span>
+            </div>
+            <div class="vapor-grid-perspective h-48 rounded-lg flex items-end justify-center pb-4">
+              <span class="text-vapor-text font-vapor">.vapor-grid-perspective</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glow Utilities -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Glow Utilities</h3>
+          <div class="flex flex-wrap gap-8">
+            <div
+              class="w-24 h-24 bg-vapor-surface rounded-lg glow-sm flex items-center justify-center"
+            >
+              <span class="text-xs">.glow-sm</span>
+            </div>
+            <div
+              class="w-24 h-24 bg-vapor-surface rounded-lg glow flex items-center justify-center"
+            >
+              <span class="text-xs">.glow</span>
+            </div>
+            <div
+              class="w-24 h-24 bg-vapor-surface rounded-lg glow-lg flex items-center justify-center"
+            >
+              <span class="text-xs">.glow-lg</span>
+            </div>
+            <div
+              class="w-24 h-24 bg-vapor-surface rounded-lg glow-xl flex items-center justify-center"
+            >
+              <span class="text-xs">.glow-xl</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cassette -->
+        <div class="mb-16">
+          <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Retro Elements</h3>
+          <span class="vapor-cassette">Now Playing: Synthwave Mix Vol. 1</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="min-h-screen bg-vapor-surface py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-vaporDisplay text-center neon-text mb-16">
+          Installation
+        </h2>
+
+        <div class="vapor-card mb-8">
+          <h3 class="text-xl font-vaporDisplay neon-text mb-4">1. Install the package</h3>
+          <pre
+            class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"
+          ><code class="text-vapor-text">npm install tail-vapor</code></pre>
+        </div>
+
+        <div class="vapor-card mb-8">
+          <h3 class="text-xl font-vaporDisplay neon-text mb-4">2. Add to tailwind.config.js</h3>
+          <pre
+            class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"
+          ><code class="text-vapor-text">module.exports = {
   plugins: [
     require('tail-vapor'),
   ],
 }</code></pre>
-      </div>
-      
-      <div class="vapor-card mb-8">
-        <h3 class="text-xl font-vaporDisplay neon-text mb-4">3. Import styles (optional)</h3>
-        <pre class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"><code class="text-vapor-text">@import 'tail-vapor/src/styles.css';</code></pre>
-      </div>
-      
-      <div class="vapor-card">
-        <h3 class="text-xl font-vaporDisplay neon-text mb-4">4. Apply a theme</h3>
-        <pre class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"><code class="text-vapor-text">&lt;body data-theme="neon-city"&gt;
+        </div>
+
+        <div class="vapor-card mb-8">
+          <h3 class="text-xl font-vaporDisplay neon-text mb-4">3. Import styles (optional)</h3>
+          <pre
+            class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"
+          ><code class="text-vapor-text">@import 'tail-vapor/src/styles.css';</code></pre>
+        </div>
+
+        <div class="vapor-card">
+          <h3 class="text-xl font-vaporDisplay neon-text mb-4">4. Apply a theme</h3>
+          <pre
+            class="bg-vapor p-4 rounded-lg overflow-x-auto font-vaporMono text-sm"
+          ><code class="text-vapor-text">&lt;body data-theme="neon-city"&gt;
   &lt;!-- Your content --&gt;
 &lt;/body&gt;
 
 &lt;!-- Available themes: --&gt;
 &lt;!-- sunset, neon-city, miami-vice, digital-dreams, midnight-chrome --&gt;</code></pre>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-vapor py-12 px-4 text-center">
-    <div class="vapor-sign inline-block text-lg mb-6">TAIL VAPOR</div>
-    <p class="text-vapor-text opacity-60 font-vapor">
-      Built with love for the 80s aesthetic 💜
-    </p>
-    <p class="text-vapor-text opacity-40 font-vaporMono text-sm mt-4">
-      © 2024 Tail Vapor • MIT License
-    </p>
-  </footer>
+    <!-- Footer -->
+    <footer class="bg-vapor py-12 px-4 text-center">
+      <div class="vapor-sign inline-block text-lg mb-6">TAIL VAPOR</div>
+      <p class="text-vapor-text opacity-60 font-vapor">Built with love for the 80s aesthetic 💜</p>
+      <p class="text-vapor-text opacity-40 font-vaporMono text-sm mt-4">
+        © 2024 Tail Vapor • MIT License
+      </p>
+    </footer>
 
-  <script>
-    // Theme switcher
-    function setTheme(theme) {
-      document.body.setAttribute('data-theme', theme);
-      
-      // Update active button
-      document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-    }
-    
-    // Music toggle
-    let isPlaying = false;
-    function toggleMusic() {
-      const audio = document.getElementById('bgMusic');
-      const btn = document.getElementById('musicBtn');
-      
-      if (isPlaying) {
-        audio.pause();
-        btn.textContent = '▶';
-      } else {
-        audio.play();
-        btn.textContent = '⏸';
+    <script>
+      // Theme switcher
+      function setTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+
+        // Update active button
+        document.querySelectorAll('.theme-btn').forEach((btn) => {
+          btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
       }
-      isPlaying = !isPlaying;
-    }
-  </script>
-</body>
+
+      // Music toggle
+      let isPlaying = false;
+      function toggleMusic() {
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        if (isPlaying) {
+          audio.pause();
+          btn.textContent = '▶';
+        } else {
+          audio.play();
+          btn.textContent = '⏸';
+        }
+        isPlaying = !isPlaying;
+      }
+    </script>
+  </body>
 </html>

@@ -30,10 +30,8 @@ npm install tail-vapor
 ```javascript
 // tailwind.config.js
 module.exports = {
-  plugins: [
-    require('tail-vapor'),
-  ],
-}
+  plugins: [require('tail-vapor')],
+};
 ```
 
 ### 2. Import the styles (optional but recommended)
@@ -54,33 +52,43 @@ module.exports = {
 ## 🎨 Theme Variations
 
 ### 1. 🌅 Sunset Boulevard
+
 Warm sunset colors with orange and pink gradients.
+
 ```html
-<body data-theme="sunset">
+<body data-theme="sunset"></body>
 ```
 
 ### 2. 🌃 Neon City (Default)
+
 Electric blues and magentas of urban nightlife.
+
 ```html
-<body data-theme="neon-city">
+<body data-theme="neon-city"></body>
 ```
 
 ### 3. 🌴 Miami Vice
+
 Teal and pink Miami sunset vibes.
+
 ```html
-<body data-theme="miami-vice">
+<body data-theme="miami-vice"></body>
 ```
 
 ### 4. 💜 Digital Dreams
+
 Purple and blue digital aesthetic.
+
 ```html
-<body data-theme="digital-dreams">
+<body data-theme="digital-dreams"></body>
 ```
 
 ### 5. 🌙 Midnight Chrome
+
 Cool chrome and silver with blue accents.
+
 ```html
-<body data-theme="midnight-chrome">
+<body data-theme="midnight-chrome"></body>
 ```
 
 ## 🎯 Usage
@@ -106,9 +114,7 @@ Cool chrome and silver with blue accents.
 </div>
 
 <!-- Neon box -->
-<div class="vapor-box p-6">
-  Neon bordered container
-</div>
+<div class="vapor-box p-6">Neon bordered container</div>
 
 <!-- Neon sign -->
 <div class="vapor-sign">OPEN 24/7</div>
@@ -228,12 +234,10 @@ Add synthwave background music to enhance the experience:
 
 ```html
 <audio id="bgMusic" loop>
-  <source src="your-synthwave-track.mp3" type="audio/mpeg">
+  <source src="your-synthwave-track.mp3" type="audio/mpeg" />
 </audio>
 
-<button onclick="document.getElementById('bgMusic').play()">
-  ▶ Play Music
-</button>
+<button onclick="document.getElementById('bgMusic').play()">▶ Play Music</button>
 ```
 
 ## 📁 Project Structure
@@ -270,6 +274,7 @@ npm run build:demo
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 - Report bugs
 - Suggest new features
 - Submit pull requests
@@ -281,6 +286,7 @@ MIT License - feel free to use this in your projects!
 ## 🌟 Credits
 
 Inspired by the aesthetics of:
+
 - 80s retro-futurism
 - Synthwave and vaporwave music
 - Neon-lit cities and sunset horizons
