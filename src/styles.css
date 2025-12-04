@@ -1,0 +1,265 @@
+/**
+ * Tail Vapor - Base Styles
+ * Import this file in your main CSS to get all vaporwave utilities
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts for vaporwave typography */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Audiowide&family=Share+Tech+Mono&display=swap');
+
+@layer base {
+  /* Default theme variables (Neon City) */
+  :root {
+    --vapor-primary: #00fff5;
+    --vapor-secondary: #ff00ff;
+    --vapor-accent: #7b2cbf;
+    --vapor-background: #0d0221;
+    --vapor-surface: #190535;
+    --vapor-text: #e0e0ff;
+    --vapor-neon1: #00fff5;
+    --vapor-neon2: #ff00ff;
+    --vapor-grid-color: #00fff5;
+    --vapor-glow-color: #00fff5;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Default body styles for vaporwave */
+  body.vapor-body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--vapor-background);
+    color: var(--vapor-text);
+    min-height: 100vh;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--vapor-neon1);
+    color: var(--vapor-background);
+  }
+}
+
+@layer components {
+  /* Additional vapor components */
+
+  /* Hero section with sunset */
+  .vapor-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(
+      180deg,
+      var(--vapor-background) 0%,
+      var(--vapor-surface) 30%,
+      #7b2cbf 60%,
+      #ff2e63 80%,
+      #ff6b35 100%
+    );
+  }
+
+  /* Perspective grid floor */
+  .vapor-floor {
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    height: 50%;
+    background:
+      linear-gradient(180deg, transparent 0%, var(--vapor-background) 100%),
+      repeating-linear-gradient(90deg, transparent, transparent 49px, var(--vapor-grid-color) 50px),
+      repeating-linear-gradient(0deg, transparent, transparent 49px, var(--vapor-grid-color) 50px);
+    background-size:
+      100% 100%,
+      50px 100%,
+      100% 50px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center top;
+  }
+
+  /* Mountains silhouette */
+  .vapor-mountains {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: var(--vapor-background);
+    clip-path: polygon(
+      0% 100%,
+      10% 60%,
+      20% 80%,
+      35% 40%,
+      50% 70%,
+      65% 30%,
+      80% 60%,
+      90% 45%,
+      100% 100%
+    );
+  }
+
+  /* Palm tree silhouette (CSS only) */
+  .vapor-palm {
+    position: relative;
+    width: 100px;
+    height: 250px;
+  }
+
+  .vapor-palm::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 150px;
+    background: linear-gradient(180deg, #2d1b4e 0%, #1a0f2e 100%);
+    border-radius: 10px 10px 5px 5px;
+  }
+
+  /* City skyline */
+  .vapor-skyline {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: var(--vapor-background);
+  }
+
+  /* Neon sign */
+  .vapor-sign {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 3px solid var(--vapor-neon1);
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--vapor-neon1);
+    text-shadow:
+      0 0 7px var(--vapor-neon1),
+      0 0 10px var(--vapor-neon1),
+      0 0 21px var(--vapor-neon1);
+    box-shadow:
+      0 0 7px var(--vapor-neon1),
+      0 0 10px var(--vapor-neon1),
+      inset 0 0 7px var(--vapor-neon1);
+    animation: neon-flicker 0.15s ease-in-out infinite;
+  }
+
+  /* Retro TV effect */
+  .vapor-tv {
+    position: relative;
+    border: 20px solid #333;
+    border-radius: 20px;
+    box-shadow:
+      inset 0 0 50px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .vapor-tv::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* VHS tracking effect */
+  .vapor-vhs {
+    position: relative;
+  }
+
+  .vapor-vhs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 60%,
+      transparent 80%
+    );
+    animation: scanline 8s linear infinite;
+    z-index: 100;
+  }
+
+  /* Cassette tape decoration */
+  .vapor-cassette {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .vapor-cassette::before {
+    content: '▶ ';
+    color: var(--vapor-neon1);
+  }
+}
+
+@layer utilities {
+  /* Additional utility classes */
+
+  /* Gradient text */
+  .gradient-text-vapor {
+    background: linear-gradient(90deg, var(--vapor-neon1), var(--vapor-neon2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Blur backdrop */
+  .backdrop-vapor {
+    backdrop-filter: blur(10px);
+    background-color: rgba(13, 2, 33, 0.8);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
