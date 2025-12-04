@@ -353,12 +353,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--vapor-neon1),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, var(--vapor-neon1), transparent);
     animation: scanline 3s linear infinite;
   }
 

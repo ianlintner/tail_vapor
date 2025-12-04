@@ -684,7 +684,8 @@ const tailVapor = plugin(
         outline: 'none',
         transition: 'all 0.3s ease',
         '&:focus': {
-          boxShadow: '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
+          boxShadow:
+            '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
           borderColor: 'var(--vapor-neon1, #00fff5)',
         },
         '&::placeholder': {
@@ -706,7 +707,8 @@ const tailVapor = plugin(
         minHeight: '100px',
         transition: 'all 0.3s ease',
         '&:focus': {
-          boxShadow: '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
+          boxShadow:
+            '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
           borderColor: 'var(--vapor-neon1, #00fff5)',
         },
         '&::placeholder': {
@@ -760,7 +762,8 @@ const tailVapor = plugin(
 
       '.vapor-progress-bar': {
         height: '100%',
-        background: 'linear-gradient(90deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
+        background:
+          'linear-gradient(90deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
         borderRadius: '4px',
         boxShadow: '0 0 10px var(--vapor-neon1, #00fff5)',
         transition: 'width 0.3s ease',
@@ -777,7 +780,8 @@ const tailVapor = plugin(
       '.vapor-divider-vertical': {
         width: '1px',
         height: '100%',
-        background: 'linear-gradient(180deg, transparent, var(--vapor-neon1, #00fff5), transparent)',
+        background:
+          'linear-gradient(180deg, transparent, var(--vapor-neon1, #00fff5), transparent)',
         margin: '0 1.5rem',
       },
 
@@ -1079,14 +1083,16 @@ const tailVapor = plugin(
           left: '-100%',
           right: '0',
           bottom: '0',
-          background: 'linear-gradient(90deg, transparent, var(--vapor-neon1, #00fff5), transparent)',
+          background:
+            'linear-gradient(90deg, transparent, var(--vapor-neon1, #00fff5), transparent)',
           animation: 'laser-scan 2s linear infinite',
         },
       },
 
       // Outrun gradient
       '.vapor-outrun': {
-        background: 'linear-gradient(180deg, #0c0c1e 0%, #1a1a3e 30%, #7b42ff 60%, #ff2d95 80%, #fff020 100%)',
+        background:
+          'linear-gradient(180deg, #0c0c1e 0%, #1a1a3e 30%, #7b42ff 60%, #ff2d95 80%, #fff020 100%)',
       },
 
       // Arcade style
@@ -1151,14 +1157,16 @@ const tailVapor = plugin(
         textTransform: 'uppercase',
         letterSpacing: '0.1em',
         color: '#fff',
-        background: 'linear-gradient(135deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
+        background:
+          'linear-gradient(135deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
         border: 'none',
         borderRadius: '0.25rem',
         cursor: 'pointer',
         transition: 'all 0.3s ease',
         boxShadow: '0 0 20px rgba(0, 255, 245, 0.3), 0 0 20px rgba(255, 0, 255, 0.3)',
         '&:hover': {
-          background: 'linear-gradient(135deg, var(--vapor-neon2, #ff00ff), var(--vapor-neon1, #00fff5))',
+          background:
+            'linear-gradient(135deg, var(--vapor-neon2, #ff00ff), var(--vapor-neon1, #00fff5))',
           boxShadow: '0 0 30px rgba(0, 255, 245, 0.5), 0 0 30px rgba(255, 0, 255, 0.5)',
         },
       },
@@ -1345,7 +1353,8 @@ const tailVapor = plugin(
 
       // Gradient text variations
       '.gradient-text-vapor': {
-        background: 'linear-gradient(90deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
+        background:
+          'linear-gradient(90deg, var(--vapor-neon1, #00fff5), var(--vapor-neon2, #ff00ff))',
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
@@ -1461,7 +1470,8 @@ const tailVapor = plugin(
           left: '0',
           right: '0',
           bottom: '0',
-          background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.7) 100%)',
+          background:
+            'radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.7) 100%)',
           pointerEvents: 'none',
         },
       },
@@ -1523,7 +1533,8 @@ const tailVapor = plugin(
       // Focus ring
       '.focus-neon:focus': {
         outline: 'none',
-        boxShadow: '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
+        boxShadow:
+          '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
       },
     });
 
@@ -1566,14 +1577,11 @@ const tailVapor = plugin(
           // Phase 2 background images
           'outrun-gradient':
             'linear-gradient(180deg, #0c0c1e 0%, #1a1a3e 30%, #7b42ff 60%, #ff2d95 80%, #fff020 100%)',
-          'arcade-gradient':
-            'linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #39ff14 100%)',
-          'cyber-noir-gradient':
-            'linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 50%, #ff4444 100%)',
-          'holographic':
+          'arcade-gradient': 'linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #39ff14 100%)',
+          'cyber-noir-gradient': 'linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 50%, #ff4444 100%)',
+          holographic:
             'linear-gradient(135deg, rgba(255,0,255,0.5) 0%, rgba(0,255,245,0.5) 25%, rgba(139,92,246,0.5) 50%, rgba(255,0,255,0.5) 75%, rgba(0,255,245,0.5) 100%)',
-          'rainbow':
-            'linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff)',
+          rainbow: 'linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff)',
           'miami-gradient':
             'linear-gradient(180deg, #011627 0%, #023047 30%, #41ead4 70%, #ff6eff 100%)',
           'digital-gradient':
@@ -1591,8 +1599,7 @@ const tailVapor = plugin(
           // Phase 2 box shadows
           'neon-dual':
             '0 0 10px var(--vapor-neon1), 0 0 20px var(--vapor-neon1), 0 0 10px var(--vapor-neon2), 0 0 40px var(--vapor-neon2)',
-          'neon-inset':
-            'inset 0 0 10px var(--vapor-neon1), inset 0 0 20px var(--vapor-neon1)',
+          'neon-inset': 'inset 0 0 10px var(--vapor-neon1), inset 0 0 20px var(--vapor-neon1)',
           arcade: '0 0 20px #39ff14, inset 0 0 20px rgba(57, 255, 20, 0.1)',
           'cyber-noir': '0 0 20px rgba(255, 68, 68, 0.3), 0 0 40px rgba(255, 68, 68, 0.2)',
           holographic: '0 0 20px rgba(255, 0, 255, 0.3), 0 0 40px rgba(0, 255, 245, 0.3)',

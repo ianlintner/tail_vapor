@@ -165,7 +165,7 @@ Dark cyberpunk detective noir with red and mint accents.
 
 ```html
 <!-- Input -->
-<input type="text" class="vapor-input" placeholder="Enter text...">
+<input type="text" class="vapor-input" placeholder="Enter text..." />
 
 <!-- Textarea -->
 <textarea class="vapor-textarea" placeholder="Your message..."></textarea>
@@ -359,9 +359,7 @@ Dark cyberpunk detective noir with red and mint accents.
 ### Quote (NEW)
 
 ```html
-<blockquote class="vapor-quote">
-  "The future is not written."
-</blockquote>
+<blockquote class="vapor-quote">"The future is not written."</blockquote>
 ```
 
 ### List (NEW)
