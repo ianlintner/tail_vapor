@@ -502,13 +502,13 @@
         <!-- Tabs -->
         <div class="mb-16">
           <h3 class="text-2xl font-vaporDisplay neon-text-secondary mb-6">Tabs</h3>
-          <div class="vapor-tabs mb-4">
-            <button class="vapor-tab vapor-tab-active">Overview</button>
-            <button class="vapor-tab">Features</button>
-            <button class="vapor-tab">Usage</button>
-            <button class="vapor-tab">Examples</button>
+          <div class="vapor-tabs mb-4" role="tablist" aria-label="Demo tabs">
+            <button class="vapor-tab vapor-tab-active" role="tab" aria-selected="true" tabindex="0">Overview</button>
+            <button class="vapor-tab" role="tab" aria-selected="false" tabindex="-1">Features</button>
+            <button class="vapor-tab" role="tab" aria-selected="false" tabindex="-1">Usage</button>
+            <button class="vapor-tab" role="tab" aria-selected="false" tabindex="-1">Examples</button>
           </div>
-          <div class="vapor-panel">
+          <div class="vapor-panel" role="tabpanel">
             <p class="text-vapor-text">Tab content goes here. Click the tabs above to navigate.</p>
           </div>
         </div>
@@ -818,13 +818,42 @@
         isPlaying = !isPlaying;
       }
 
-      // Simple tab functionality
-      document.querySelectorAll('.vapor-tab').forEach(tab => {
+      // Tab functionality with keyboard navigation
+      const tabs = document.querySelectorAll('.vapor-tab');
+      tabs.forEach((tab, index) => {
         tab.addEventListener('click', function() {
-          document.querySelectorAll('.vapor-tab').forEach(t => t.classList.remove('vapor-tab-active'));
-          this.classList.add('vapor-tab-active');
+          activateTab(this);
+        });
+
+        tab.addEventListener('keydown', function(e) {
+          let newIndex;
+          if (e.key === 'ArrowRight') {
+            newIndex = (index + 1) % tabs.length;
+            tabs[newIndex].focus();
+            activateTab(tabs[newIndex]);
+            e.preventDefault();
+          } else if (e.key === 'ArrowLeft') {
+            newIndex = (index - 1 + tabs.length) % tabs.length;
+            tabs[newIndex].focus();
+            activateTab(tabs[newIndex]);
+            e.preventDefault();
+          } else if (e.key === 'Enter' || e.key === ' ') {
+            activateTab(this);
+            e.preventDefault();
+          }
         });
       });
+
+      function activateTab(selectedTab) {
+        tabs.forEach(t => {
+          t.classList.remove('vapor-tab-active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        selectedTab.classList.add('vapor-tab-active');
+        selectedTab.setAttribute('aria-selected', 'true');
+        selectedTab.setAttribute('tabindex', '0');
+      }
     </script>
   </body>
 </html>

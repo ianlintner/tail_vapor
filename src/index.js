@@ -679,12 +679,12 @@ const tailVapor = plugin(
         fontSize: '0.875rem',
         color: 'var(--vapor-text, #eaeaea)',
         backgroundColor: 'var(--vapor-background, #0d0221)',
-        border: '1px solid var(--vapor-neon1, #00fff5)',
+        border: '2px solid var(--vapor-neon1, #00fff5)',
         borderRadius: '0.25rem',
         outline: 'none',
         transition: 'all 0.3s ease',
         '&:focus': {
-          boxShadow: '0 0 10px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
+          boxShadow: '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
           borderColor: 'var(--vapor-neon1, #00fff5)',
         },
         '&::placeholder': {
@@ -699,14 +699,14 @@ const tailVapor = plugin(
         fontSize: '0.875rem',
         color: 'var(--vapor-text, #eaeaea)',
         backgroundColor: 'var(--vapor-background, #0d0221)',
-        border: '1px solid var(--vapor-neon1, #00fff5)',
+        border: '2px solid var(--vapor-neon1, #00fff5)',
         borderRadius: '0.25rem',
         outline: 'none',
         resize: 'vertical',
         minHeight: '100px',
         transition: 'all 0.3s ease',
         '&:focus': {
-          boxShadow: '0 0 10px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
+          boxShadow: '0 0 0 2px var(--vapor-background, #0d0221), 0 0 0 4px var(--vapor-neon1, #00fff5), 0 0 20px var(--vapor-neon1, #00fff5)',
           borderColor: 'var(--vapor-neon1, #00fff5)',
         },
         '&::placeholder': {
@@ -1416,9 +1416,10 @@ const tailVapor = plugin(
 
       // Reduced motion safe
       '@media (prefers-reduced-motion: reduce)': {
-        '.motion-safe-animate': {
-          animation: 'none !important',
-          transition: 'none !important',
+        '*': {
+          animationDuration: '0.01ms !important',
+          animationIterationCount: '1 !important',
+          transitionDuration: '0.01ms !important',
         },
       },
 

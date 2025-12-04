@@ -47,6 +47,11 @@
   }
 
   /* Scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--vapor-neon1) var(--vapor-background);
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
