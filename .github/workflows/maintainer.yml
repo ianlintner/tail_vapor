@@ -2,7 +2,7 @@ name: Caretaker
 
 on:
   schedule:
-    - cron: "0 8 * * *"
+    - cron: '0 8 * * *'
   pull_request:
     types: [opened, synchronize, reopened]
   pull_request_review:
@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Run mode"
+        description: 'Run mode'
         required: false
-        default: "full"
+        default: 'full'
         type: choice
         options: [full, pr-only, issue-only, upgrade-only, dry-run]
 
@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Restore memory store cache
         uses: actions/cache@v4
@@ -99,7 +99,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Install caretaker
         run: |

@@ -32,9 +32,9 @@ issue_agent:
   auto_close_stale_days: 30
   auto_close_questions: true
   labels:
-    bug: ["bug"]
-    feature: ["enhancement", "feature"]
-    question: ["question"]
+    bug: ['bug']
+    feature: ['enhancement', 'feature']
+    question: ['question']
 
 upgrade_agent:
   enabled: true
@@ -106,7 +106,7 @@ human_escalation:
 escalation:
   targets: []
   stale_days: 7
-  labels: ["maintainer:escalated"]
+  labels: ['maintainer:escalated']
 
 llm:
   claude_enabled: auto
