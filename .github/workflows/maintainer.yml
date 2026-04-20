@@ -34,7 +34,60 @@ permissions:
   pull-requests: write
 
 jobs:
+  # Short-circuit comment events that caretaker itself produced. Without this
+  # filter, every status / readiness / task comment caretaker writes triggers
+  # another caretaker run via the issue_comment webhook, producing a feedback
+  # loop. Comments are identified by a caretaker:* HTML-comment marker and
+  # by known bot logins.
+  dispatch-guard:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.guard.outputs.should_run }}
+    steps:
+      - id: guard
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ev = context.eventName;
+            if (ev !== "issue_comment" && ev !== "pull_request_review") {
+              core.setOutput("should_run", "true");
+              return;
+            }
+            const payload = context.payload || {};
+            if (ev === "issue_comment") {
+              const body = payload.comment?.body || "";
+              if (/<!--\s*caretaker:[a-z0-9:_-]+/i.test(body)) {
+                core.notice("skip: issue_comment carries caretaker marker");
+                core.setOutput("should_run", "false");
+                return;
+              }
+              const actor = payload.comment?.user?.login || "";
+              const botActors = new Set([
+                "the-care-taker[bot]",
+                "github-actions[bot]",
+                "copilot-swe-agent[bot]",
+                "anthropic-code-agent[bot]",
+                "copilot-pull-request-reviewer[bot]",
+              ]);
+              if (botActors.has(actor)) {
+                core.notice(`skip: bot-authored issue_comment from ${actor}`);
+                core.setOutput("should_run", "false");
+                return;
+              }
+            }
+            if (ev === "pull_request_review") {
+              const reviewer = payload.review?.user?.login || "";
+              if (reviewer === "copilot-pull-request-reviewer[bot]") {
+                core.notice(`skip: pull_request_review by ${reviewer}`);
+                core.setOutput("should_run", "false");
+                return;
+              }
+            }
+            core.setOutput("should_run", "true");
+
   maintain:
+    needs: dispatch-guard
+    if: ${{ needs.dispatch-guard.outputs.should_run == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,7 +109,7 @@ jobs:
       - name: Install caretaker
         run: |
           VERSION=$(cat .github/maintainer/.version)
-          pip install "caretaker @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          pip install "caretaker-github @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
 
       - name: Run
         env:
@@ -104,7 +157,7 @@ jobs:
       - name: Install caretaker
         run: |
           VERSION=$(cat .github/maintainer/.version)
-          pip install "caretaker @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          pip install "caretaker-github @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
 
       - name: Self-heal — analyse own failure
         env:
