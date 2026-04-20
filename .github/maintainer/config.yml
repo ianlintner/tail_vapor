@@ -32,9 +32,9 @@ issue_agent:
   auto_close_stale_days: 30
   auto_close_questions: true
   labels:
-    bug: ["bug"]
-    feature: ["enhancement", "feature"]
-    question: ["question"]
+    bug: ['bug']
+    feature: ['enhancement', 'feature']
+    question: ['question']
 
 upgrade_agent:
   enabled: true
@@ -106,7 +106,7 @@ human_escalation:
 escalation:
   targets: []
   stale_days: 7
-  labels: ["maintainer:escalated"]
+  labels: ['maintainer:escalated']
 
 llm:
   claude_enabled: auto
@@ -114,7 +114,6 @@ llm:
     - ci_log_analysis
     - architectural_review
     - issue_decomposition
-
 # Optional: foundry-backed in-process coding executor.
 # When foundry.enabled is false (default), every coding task continues to be
 # routed to @copilot via the existing comment protocol — zero behavior change.
