@@ -2,7 +2,7 @@ name: Caretaker
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: "0 8 * * *"
   pull_request:
     types: [opened, synchronize, reopened]
   pull_request_review:
@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Run mode'
+        description: "Run mode"
         required: false
-        default: 'full'
+        default: "full"
         type: choice
         options: [full, pr-only, issue-only, upgrade, dry-run]
 
@@ -96,7 +96,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Restore memory store cache
         uses: actions/cache@v4
@@ -109,20 +109,79 @@ jobs:
       - name: Install caretaker
         run: |
           VERSION=$(cat .github/maintainer/.version)
-          pip install "caretaker-github @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          pip install "git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          # LiteLLM is the ``llm-multi`` extra from caretaker's
+          # pyproject.toml; installing it separately keeps the install
+          # line above compatible with both the pre- and post-v0.8.1
+          # distribution rename (``caretaker`` vs ``caretaker-github``).
+          # Harmless when ``executor.foundry.enabled=false`` — no model
+          # is called — but required when the repo opts into the
+          # custom coding agent (see docs/custom-coding-agent-plan.md).
+          pip install "litellm>=1.50,<2"
+
+      # Cheap, offline sanity check — runs before every doctor/run call
+      # so a broken pin, unparseable config, or missing secret for an
+      # enabled agent fails loudly with an actionable row instead of
+      # getting swallowed by a later 403 / import error. See the
+      # 2026-04-22 audio_engineer outage post-mortem.
+      - name: Caretaker bootstrap-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Preferred: pass GitHub App credentials so caretaker self-mints
+          # tokens via GitHubAppCredentialsProvider (auto-refresh, no expiry).
+          # Set CARETAKER_APP_ID (var) + CARETAKER_APP_PRIVATE_KEY (secret)
+          # and un-comment these three lines:
+          # CARETAKER_GITHUB_APP_ID: ${{ vars.CARETAKER_APP_ID }}
+          # CARETAKER_GITHUB_APP_INSTALLATION_ID: ${{ vars.CARETAKER_APP_INSTALLATION_ID }}
+          # CARETAKER_GITHUB_APP_PRIVATE_KEY: ${{ secrets.CARETAKER_APP_PRIVATE_KEY }}
+          COPILOT_PAT: ${{ secrets.COPILOT_PAT }}
+          # Add your LLM provider credentials here. Examples:
+          # Azure AI Foundry (recommended):
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE }}
+          # Azure OpenAI (classic):
+          # AZURE_API_KEY: ${{ secrets.AZURE_API_KEY }}
+          # AZURE_API_BASE: ${{ secrets.AZURE_API_BASE }}
+          # Direct Anthropic (if not using Azure AI Foundry):
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Fleet registry OAuth2 client_credentials wiring (only consumed
+          # when fleet_registry.enabled=true in config.yml). Safe to leave
+          # unset otherwise — caretaker just skips the heartbeat.
+          OAUTH2_CLIENT_ID: ${{ secrets.OAUTH2_CLIENT_ID }}
+          OAUTH2_CLIENT_SECRET: ${{ secrets.OAUTH2_CLIENT_SECRET }}
+          OAUTH2_TOKEN_URL: ${{ vars.OAUTH2_TOKEN_URL }}
+          OAUTH2_SCOPE: ${{ vars.OAUTH2_SCOPE }}
+        run: |
+          caretaker doctor \
+            --config .github/maintainer/config.yml \
+            --bootstrap-check
 
       - name: Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Preferred: GitHub App self-mint credentials (see bootstrap-check above).
+          # CARETAKER_GITHUB_APP_ID: ${{ vars.CARETAKER_APP_ID }}
+          # CARETAKER_GITHUB_APP_INSTALLATION_ID: ${{ vars.CARETAKER_APP_INSTALLATION_ID }}
+          # CARETAKER_GITHUB_APP_PRIVATE_KEY: ${{ secrets.CARETAKER_APP_PRIVATE_KEY }}
           # Fine-grained PAT for a real write-capable user or machine user.
           # Caretaker uses this for Copilot issue assignment and @copilot comments
           # that must not be authored as github-actions[bot].
           COPILOT_PAT: ${{ secrets.COPILOT_PAT }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # LLM provider credentials — add whichever your config uses:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE }}
+          # AZURE_API_KEY: ${{ secrets.AZURE_API_KEY }}
+          # AZURE_API_BASE: ${{ secrets.AZURE_API_BASE }}
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CARETAKER_EVENT_PAYLOAD: ${{ toJSON(github.event) }}
           CARETAKER_RUN_MODE: ${{ github.event.inputs.mode || 'full' }}
           CARETAKER_EVENT_TYPE: ${{ github.event_name }}
-          CARETAKER_FLEET_SECRET: ${{ secrets.CARETAKER_FLEET_SECRET }}
+          # Fleet registry OAuth2 client_credentials wiring (only consumed when
+          # fleet_registry.enabled=true in config.yml).
+          OAUTH2_CLIENT_ID: ${{ secrets.OAUTH2_CLIENT_ID }}
+          OAUTH2_CLIENT_SECRET: ${{ secrets.OAUTH2_CLIENT_SECRET }}
+          OAUTH2_TOKEN_URL: ${{ vars.OAUTH2_TOKEN_URL }}
+          OAUTH2_SCOPE: ${{ vars.OAUTH2_SCOPE }}
         run: |
           caretaker run \
             --config .github/maintainer/config.yml \
@@ -139,6 +198,8 @@ jobs:
           name: caretaker-memory-snapshot-${{ github.run_number }}
           path: .caretaker-memory-snapshot.json
           if-no-files-found: ignore
+          # Required: upload-artifact v4 excludes dotfiles by default.
+          include-hidden-files: true
           retention-days: 30
 
   # When the caretaker run itself fails, trigger the self-heal agent
@@ -153,21 +214,34 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install caretaker
         run: |
           VERSION=$(cat .github/maintainer/.version)
-          pip install "caretaker-github @ git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          pip install "git+https://github.com/ianlintner/caretaker.git@v${VERSION}"
+          # LiteLLM is the ``llm-multi`` extra from caretaker's
+          # pyproject.toml; installing it separately keeps the install
+          # line above compatible with both the pre- and post-v0.8.1
+          # distribution rename (``caretaker`` vs ``caretaker-github``).
+          # Harmless when ``executor.foundry.enabled=false`` — no model
+          # is called — but required when the repo opts into the
+          # custom coding agent (see docs/custom-coding-agent-plan.md).
+          pip install "litellm>=1.50,<2"
 
       - name: Self-heal — analyse own failure
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Preferred: GitHub App self-mint credentials.
+          # CARETAKER_GITHUB_APP_ID: ${{ vars.CARETAKER_APP_ID }}
+          # CARETAKER_GITHUB_APP_INSTALLATION_ID: ${{ vars.CARETAKER_APP_INSTALLATION_ID }}
+          # CARETAKER_GITHUB_APP_PRIVATE_KEY: ${{ secrets.CARETAKER_APP_PRIVATE_KEY }}
           # Fine-grained PAT for a real write-capable user or machine user.
           COPILOT_PAT: ${{ secrets.COPILOT_PAT }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE }}
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CARETAKER_FAILED_RUN_ID: ${{ github.run_id }}
-          CARETAKER_FLEET_SECRET: ${{ secrets.CARETAKER_FLEET_SECRET }}
           CARETAKER_EVENT_PAYLOAD: >-
             {
               "workflow_run": {
@@ -177,9 +251,16 @@ jobs:
                 "head_branch": "${{ github.ref_name }}"
               }
             }
+          # Fleet registry OAuth2 client_credentials wiring (self-heal also
+          # emits a heartbeat). Only used when fleet_registry.enabled=true.
+          OAUTH2_CLIENT_ID: ${{ secrets.OAUTH2_CLIENT_ID }}
+          OAUTH2_CLIENT_SECRET: ${{ secrets.OAUTH2_CLIENT_SECRET }}
+          OAUTH2_TOKEN_URL: ${{ vars.OAUTH2_TOKEN_URL }}
+          OAUTH2_SCOPE: ${{ vars.OAUTH2_SCOPE }}
         run: |
           caretaker run \
             --config .github/maintainer/config.yml \
             --mode self-heal \
             --event-type workflow_run \
             --event-payload "$CARETAKER_EVENT_PAYLOAD"
+
